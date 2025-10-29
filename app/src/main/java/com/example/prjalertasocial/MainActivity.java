@@ -1,7 +1,9 @@
 package com.example.prjalertasocial;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.prjalertasocial.databinding.ActivityCadastrarUsuarioBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,11 +20,13 @@ import com.example.prjalertasocial.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,34 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.include_cadastrar_usuario).setVisibility(View.VISIBLE);
                 findViewById(R.id.fab).setVisibility(View.INVISIBLE);
 
+            }
+        });
+
+        Button btnCancelar = (Button)findViewById(R.id.btnCancelar);
+        btnCancelar.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Cancelando...", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                findViewById(R.id.include_listar_usuarios).setVisibility(View.VISIBLE);
+                findViewById(R.id.include_cadastrar_usuario).setVisibility(View.INVISIBLE);
+                findViewById(R.id.fab).setVisibility(View.VISIBLE);
+            }
+        });
+
+        Button btnSalvar = (Button)findViewById(R.id.btnSalvar);
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Retornando... Aguarde processo para salvar...",
+
+                                Snackbar.LENGTH_LONG)
+
+                        .setAction("Action", null).show();
+
+                findViewById(R.id.include_listar_usuarios).setVisibility(View.VISIBLE);
+                findViewById(R.id.include_cadastrar_usuario).setVisibility(View.INVISIBLE);
+                findViewById(R.id.fab).setVisibility(View.VISIBLE);
             }
         });
     }
